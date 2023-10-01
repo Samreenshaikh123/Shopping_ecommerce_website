@@ -1,0 +1,382 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paradise Mattress </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+    body {
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* CSS for header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f5f5f5;
+    }
+
+    .header .logo {
+      font-size: 30px;
+      font-family: "Lucida Handwriting", cursive;
+      color: #000;
+      text-decoration: none;
+      margin-left: 30px;
+    }
+
+    .nav-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #f5f5f5;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: #000;
+      padding: 35px 20px;
+    }
+
+    /* CSS for main element */
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 620px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("{% static 'images/shop1.gif'%}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .intro h1 {
+      font-family: sans-serif;
+      font-size: 60px;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .intro p {
+      font-size: 20px;
+      color: #d1d1d1;
+      text-transform: uppercase;
+      margin: 20px 0;
+    }
+
+    .intro button {
+      background-color: #5edaf0;
+      color: #000;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+    }
+
+    .achievements {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 80px;
+    }
+
+    .achievements .work {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .achievements .work i {
+      width: fit-content;
+      font-size: 50px;
+      color: #333333;
+      border-radius: 50%;
+      border: 2px solid #333333;
+      padding: 12px;
+    }
+
+    .achievements .work .work-heading {
+      font-size: 20px;
+      color: #333333;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .achievements .work .work-text {
+      font-size: 15px;
+      color: #585858;
+      margin: 10px 0;
+    }
+
+    .about-me {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 80px;
+      border-top: 2px solid #eeeeee;
+    }
+
+    .about-me img {
+      width: 500px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .about-me-text h2 {
+      font-size: 30px;
+      color: #333333;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .about-me-text p {
+      font-size: 15px;
+      color: #585858;
+      margin: 10px 0;
+    }
+
+    /* CSS for footer */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #302f49;
+      padding: 40px 80px;
+    }
+
+    .footer .copy {
+      color: #fff;
+    }
+
+    .bottom-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .bottom-links .links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .bottom-links .links span {
+      font-size: 20px;
+      color: #fff;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .bottom-links .links a {
+      text-decoration: none;
+      color: #a1a1a1;
+      padding: 10px 20px;
+    }
+    .footer{
+  background-color: #24262b;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+.footer-col h4::before{
+  content: '';
+  position: absolute;
+  left:0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+}
+.footer-col ul li a{
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+  color: #ffffff;
+  padding-left: 8px;
+}
+.footer-col .social-links a{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255,255,255,0.2);
+  margin:0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <marquee class="logo"> <i class="em em-shopping_bags" aria-role="presentation" aria-label=""></i>
+      <b>PARADISE MATTRESS</b>  <i class="em em-shopping_bags" aria-role="presentation" aria-label=""></i></marquee>
+    <nav class="nav-items">
+      <a href="/admin">Admin</a>
+      <a href="#">Home</a>
+      <a href="/login">Login</a>
+      <a href="/signup">Register</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact Us</a>
+    </nav>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>PARADISE MATTRESS</h1>
+      <p>Mattress that fells comfort..</p>
+      <a href="/login"> <button>Show Now</button></a>
+    </div>
+    <div class="achievements">
+      <div class="work">
+        <i class="fas fa-bed"></i>
+        <h1 class="work-heading">Mattress</h1>
+        <p class="work-text"> Experience unparalleled comfort and support with our premium mattresses. Crafted with cutting-edge technology
+          and luxurious materials, our mattresses ensure restful sleep and rejuvenation. Upgrade your sleep experience with a
+          perfect blend of softness and stability. Transform your nights and wake up ready to conquer each day.
+          Your dream mattress awaits.</p>
+      </div>
+      <div class="work">
+        <i class="fas fa-skiing"></i>
+        <h1 class="work-heading">Work Done</h1>
+        <p class="work-text">Discover true craftsmanship at our mattress shop. Each mattress is meticulously handcrafted,
+          from stitching to tufting, ensuring unmatched quality. Our artisans pour dedication and skill into every detail,
+          creating mattresses that promise exquisite comfort and durability. Experience the art of sleep with our manually
+          perfected creations, a testament to timeless quality.</p>
+      </div>
+      <div class="work">
+        <i class="fas fa-ethernet"></i>
+        <h1 class="work-heading">Network</h1>
+        <p class="work-text">Forge strong vendor partnerships across Karnataka for our mattress shop.
+          Collaborate with diverse suppliers to curate a comprehensive range of high-quality mattresses.
+          From urban centers to remote corners, we ensure every customer accesses the finest sleep solutions,
+          thanks to our extensive vendor network covering the entirety of Karnataka.</p>
+      </div>
+    </div>
+    <div class="about-me">
+      <div class="about-me-text">
+        <h1>About owner</h1>
+        <p>Founded by Mohammed Jafer in the 1990s as a means of personal survival,
+          the business has since blossomed into a remarkable journey. From its humble origins, it has flourished under
+          Mohammed's relentless dedication. Today, his son Juned Shaikh leads the helm, carrying forward the legacy with
+          innovation and integrity. With a deep-rooted commitment to quality and customer satisfaction, the business stands as a
+          testament to their unwavering determination. The transition from survival to success paints a story of resilience,
+          where the son continues to steer the ship into a future of continued growth and excellence.</p>
+      </div>
+      <img src="{% static 'images/f1.gif' %}" alt="..">
+    </div>
+    <hr>
+     <div class="achievements">
+      <div class="work">
+        <i class="fas fa-shopping-cart"></i>
+        <h1 class="work-heading">Free Shipping</h1>
+        <p class="work-text"> </p>
+      </div>
+
+       <div class="achievements">
+         <div class="work">
+           <i class="fas fa-clock"></i>
+           <h1 class="work-heading">24 x 7 service</h1>
+           <p class="work-text"></p>
+         </div>
+         <!--
+         <div class="achievements">
+          <div class="work">
+            <i class="fas fa-heart"></i>
+            <h1 class="work-heading">Eco Friendly </h1>
+            <p class="work-text"> </p>
+          </div>
+         </div>
+         -->
+
+
+    </main>
+
+   <!--sevices-->
+
+
+
+  <footer class="footer">
+    <div class="copy">&copy; 2023 Paradise Mattress</div>
+    <div class="bottom-links">
+      <div class="links">
+        <span>More Info</span>
+        <a href="#">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="tel:9342746341">Call: +91 9342746341</a>
+      </div>
+      <div class="links">
+        <span>Social Links</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:paradisemattress@gmail.com"><i class="far fa-envelope"></i></a>
+         <a href="https://wa.me//9342746341"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+
+</body>
+</html>

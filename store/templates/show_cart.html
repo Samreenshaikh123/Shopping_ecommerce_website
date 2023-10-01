@@ -1,0 +1,300 @@
+{% extends 'base.html'%}
+{% load static  %}
+{% block title %} Cart{% endblock title%}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<div class="py-5">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="card shadow">
+<div class="card-body product_data">
+<div class="container-fluid" style="background-color: #e2eaef">
+   {% if cart %}
+   <header class="card-header" style="text-align:center;"> My Cart</header>
+   <div class="row">
+      <div class="col-md-8  mt-1" style="overflow-y: scroll; max-height: 100%">
+         <div class="table-responsive">
+            {% for cart in cart %}
+            <div class="card mb-1">
+               <div class="row no-gutters">
+                  <div class="col-md-4 p-2" style="text-align: center;">
+                     <img src="{{cart.product.image.url}}" class="card-img" alt="..."
+                        style="max-height: 200px; width: auto; max-width: 100%">
+                  </div>
+                  <div class="col-md-8">
+                     <div class="card-body">
+                        <h5 class="card-title mb-0">{{cart.product.name}}</h5>
+                        <p class="card-text"><small class="text-muted">Category: {{cart.product.category}}</small></p>
+                        <div class="">
+                           <div style="float: left;">
+                              <input type="button" class="minus-cart fa-minus-square" pid="{{cart.product.id}}" value="-">
+                              <span id="quantity">{{cart.quantity}}</span></td>
+                              <input type="button" class="plus-cart fa-plus-square" pid="{{cart.product.id}}" value="+">
+                           </div>
+                        </div>
+                        <br>
+                        <div class="mt-2 pb-1">
+                           <div style="float: left;">
+                              <p class="card-text"><strong>₹ {{cart.product.price}}</strong></p>
+                           </div>
+                           <form action="{% url 'remove_cart' %}" style="float: right;">
+                              {% csrf_token %}
+                              <input type="hidden" name="cart_id" value={{cart.id}}
+                                 id="prod_id">
+                              <button type="submit" class="btn btn-danger
+                                 shadow px-5 py-2 ms-4" onclick="alert('Product is deleted from cart')">Delete <i class="fa fa-trash"></i></button>
+                               <hr>
+                               <h5 style="color:maroon">Free shipping charge</h5>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h4>No product</h4>
+            {% endif %}
+         </div>
+      </div>
+      <div class="col-lg-4 bg-white rounded shadow-sm mt-1" style="height: 100%">
+         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold mt-2">Order summary
+         </div>
+         <!-- Order Summary -->
+         <div class="p-4">
+            <ul class="list-unstyled mb-4">
+               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal
+                  </strong><strong id="subtotal">₹ {{subtotal}}</strong>
+               </li>
+               <li class="d-flex justify-content-between py-3 border-bottom">
+                  <strong class="text-muted">Total</strong>
+                  <h5 class="font-weight-bold" id="total">₹ {{total}}</h5>
+               </li>
+            </ul>
+             <hr>
+      <div class="m-3 p-3">
+         <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            class="btn btn-dark rounded-pill py-2 btn-block ">Proceed to CheckOut</a>
+      </div>
+           <!-- <a href="" class=">Procceed to checkout</a>-->
+         </div>
+      </div>
+
+
+   </div>
+</div>
+<!-- Checkout-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">CheckOut Form</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+         </div>
+         <div class="modal-body">
+             <form action="/checkout" method="POST">
+           {% csrf_token %}
+
+            <div class="from-group mt-3">
+                <label>Name</label>
+                <input required type="text" name="name" id="name" class="form-control" placeholder="Enter your name">
+            </div>
+            <div class="from-group mt-3">
+                <label>Shipping Address</label>
+                <input required type="text" name="address" id="address" class="form-control" placeholder="Enter your shipping address">
+            </div>
+            <div class="from-group mt-3">
+                <label>Mobile Number</label>
+                <input required type="text" name="password" id="password" class="form-control" placeholder="Enter your mobile number">
+            </div>
+
+           <!-- <input  type="submit" class="btn btn-outline-info border rounded col-lg-3 float-right mt-2 mr-2" value="Make Payment">-->
+<!--payment-->
+                 <hr class="my-4">
+<h4>Payment Options</h4>
+         <div class="container py-5">
+    <div class="row">
+        <div class="col-lg mx-auto">
+            <div class="card ">
+                <div class="card-header">
+                    <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                        <p>Note:Please select COD options as rest all payments in under Process</p>
+                        <!-- Credit card form tabs -->
+                        <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                            <li class="nav-item"> <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Credit Card </a> </li>
+                            <li class="nav-item"> <a data-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> GooglePay </a> </li>
+                            <li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Net Banking </a> </li>
+                         <li class="nav-item"> <a data-toggle="pill" href="#cod" class="nav-link " required > <i class="fas fa-cod mr-2"></i> Cash On Delivery</a> </li>
+                        </ul>
+                    </div> <!-- End -->
+                    <!-- Credit card form content -->
+                    <div class="tab-content">
+                        <!-- credit card info-->
+                        <div id="credit-card" class="tab-pane fade show active pt-3">
+                            <form role="form" onsubmit="event.preventDefault()">
+                                <div class="form-group"> <label for="username">
+                                        <h6>Card Owner</h6>
+                                    </label> <input type="text" name="username" placeholder="Card Owner Name"  class="form-control "> </div>
+                                <div class="form-group"> <label for="cardNumber">
+                                        <h6>Card number</h6>
+                                    </label>
+                                    <div class="input-group"> <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " >
+                                        <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group"> <label><span class="hidden-xs">
+                                                    <h6>Expiration Date</h6>
+                                                </span></label>
+                                            <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" > <input type="number" placeholder="YY" name="" class="form-control" > </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group mb-4"> <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
+                                                <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                            </label> <input type="text"  class="form-control"> </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer"><button type="button" class="subscribe btn btn-primary btn-block shadow-sm">
+                                </button>
+                                </form>
+                        </div>
+                    </div> <!-- End -->
+                    <!-- Paypal info -->
+                    <div id="paypal" class="tab-pane fade pt-3">
+                        <h6 class="pb-2">Select your GooglePay account type</h6>
+                        <div class="form-group "> <label class="radio-inline">
+                            <input type="radio" name="optradio" checked> Domestic </label>
+                            <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">International </label></div>
+                        <a href="static/images/scanner.jpg"> <p> <button type="button" class="btn btn-primary "><i class="fab fa-paypal mr-2">
+
+                        </i>Scan GooglePay</button> </p></a>
+                        <p class="text-muted">
+                            Note: After clicking on the button, you will be directed to a secure gateway for payment.
+                            After completing the payment process, you will be redirected back to the website to view details of
+                            your order. </p>
+                    </div> <!-- End -->
+                    <!-- bank transfer info -->
+                    <div id="net-banking" class="tab-pane fade pt-3">
+                        <div class="form-group "> <label for="Select Your Bank">
+                                <h6>Select your Bank</h6>
+                            </label> <select class="form-control" id="ccmonth">
+                                <option value="" selected disabled>--Please select your Bank--</option>
+                                <option>Union Bank Of India</option>
+                                <option>State Bank Of India</option>
+                                <option>Canara Bank</option>
+                                <option>KVG Bank</option>
+                                <option>Axis Bank</option>
+                            </select>
+                        </div>
+                      <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment.
+                            After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+                    </div>
+                            <!-- End -->
+                    <!-- End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+          <hr class="my-4">
+
+    <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+
+             </form>
+            </div>
+         </div>
+
+      </div>
+</div>
+
+
+<!--------------------------------------------------------------------------------------------->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+   // Delete Product
+   $('.remove-cart').click(function(){
+        //console.log("Delete Button Clicked")
+        let id=$(this).attr("product_id").toString()
+        //console.log(id);
+        var elm = this;
+        mydata = {sid: id};
+        $.ajax({
+          type: "POST",
+          url: "/remove_cart",
+          data: mydata,
+          success: function (data) {
+            console.log(data);
+            $('#cart_no').text(data.totalitem);
+            document.getElementById('subtotal').innerHTML = `₹ ${data.subtotal}`;
+            document.getElementById('total').innerHTML = `₹ ${data.total}`;
+            document.getElementById('total2').innerHTML = `₹ ${data.total}`;
+            $('.product_data').load(location.href + " .product_data");
+   
+           }
+         })
+    });
+   //End Delete Product
+   
+   
+   //Plus Product
+   $('.plus-cart').click(function(){
+     var id=$(this).attr("pid").toString();
+     var eml = this.parentNode.children[1];
+     console.log(id)
+   
+     $.ajax({
+         type: "GET",
+         url: "/plus_cart",
+         data: {
+           prod_id:id
+         },
+         success: function (data) {
+           console.log(data)
+           eml.innerText = data.quantity;
+           document.getElementById('subtotal').innerHTML = `₹ ${data.subtotal}`;
+           document.getElementById('total').innerHTML = `₹ ${data.total}`;
+         }
+       })
+   
+   });
+   //End Plus Product
+   
+   
+   //Minus Product
+   $('.minus-cart').click(function(){
+     var id=$(this).attr("pid").toString();
+     var eml = this.parentNode.children[1];
+   
+   
+     $.ajax({
+         type: "GET",
+         url: "/minus_cart",
+         data: {
+           prod_id:id
+         },
+         success: function (data) {
+           console.log(data)
+           eml.innerText = data.quantity;
+           document.getElementById('subtotal').innerHTML = `₹ ${data.subtotal}`;
+           document.getElementById('total').innerHTML = `₹ ${data.total}`;
+         }
+       })
+   
+   });
+   //End Minus Product
+   $(function() {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+{% endblock content %}

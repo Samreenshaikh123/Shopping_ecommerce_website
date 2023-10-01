@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Paradise Mattress| Contact Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+          *{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+ font-family: "montserrat",sans-serif;
+}
+body{
+background-image: url('static/images/c3.gif');
+background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: right ;
+background-color:LightGray;
+}
+
+.contact-section{
+  background: #fff;
+  padding: 80px 0;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 150px;
+  border-top-right-radius: 300px;
+  border-bottom-left-radius: 300px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.8) 0px 3px 7px -3px;
+
+}
+.contact-section:hover{
+  border-top-left-radius: 300px;
+  border-bottom-right-radius: 300px;
+  transition: .5s;
+}
+
+.inner-width{
+  max-width: 600px;
+  margin: auto;
+  padding: 0 20px;
+
+}
+
+.contact-section h1{
+  font-size: 22px;
+  color: #FF8066;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+
+.name,.email,.message{
+  background: none;
+  border:none;
+  outline: none;
+  border-bottom: 1px solid #FF8066;
+  color: #888;
+  padding: 10px 6px;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.name{
+  float: left;
+  width: 270px;
+}
+
+.email{
+  float: right;
+  width: 270px;
+}
+
+.message{
+  min-width: 100%;
+  max-width: 100%;
+}
+
+
+.contact-section button{
+  background: none;
+  color: #fff;
+  border: 1px solid #FF8066;
+  padding: 12px 40px;
+  border-radius: 8px;
+  background: #FF8066;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: 0.4s linear;
+  cursor: pointer;
+}
+
+.contact-section button:hover{
+  background: #fff;
+  color: #FF8066;
+}
+
+
+@media screen and (max-width:600px){
+  .name,.email{
+    width: 100%;
+  }
+}
+.footer{
+  background-color: #ff44ff;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+.footer-col h4::before{
+  content: '';
+  position: absolute;
+  left:0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+}
+.footer-col ul li a{
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+  color: #ffffff;
+  padding-left: 8px;
+}
+.footer-col .social-links a{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255,255,255,0.2);
+  margin:0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+ </style>
+  </head>
+  <body>
+<form action="/contact" method="POST">
+  {% csrf_token %}
+    <div class="contact-section">
+      <div class="inner-width">
+        <h1>Give your message</h1>
+        <input type="text" class="name" id="name"  name="name" placeholder="Your Name" required>
+        <input type="email" class="email" id="email" name="email" placeholder="Your Email" required>
+        <textarea rows="3" placeholder="Message" id="content" name="content" class="message" required></textarea>
+
+        <button onsubmit="alert('Your Message has been sent Submitted')">Submit</button>
+      </div>
+    </div>
+
+</form>
+<br><br>
+  <footer class="footer">
+        <div class="footer-col">
+
+          <div >      <!--style="text-align:center"-->
+              <h1 style="color:white;">Contact Us</h1><br>
+              <h5 style="color:white">Email Id:<a href="mailto:paradisemattress@gmail.com"> paradisemattress@gmail.com</a></h5><br>
+              <h5 style="color:white">Call Us: <a href="tel:9342746341">+91 9342746341</a></h5><br>
+              <h5 style="color:white">Address:  Subas Road opposite KCC Bank Dharwad, Karnataka</h5><br>
+          </div>
+
+
+        </div>
+  </footer>
+
+
+  </body>
+</html>

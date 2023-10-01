@@ -1,0 +1,112 @@
+{% extends 'base.html'%}
+{% load static  %}
+{% block title %} Order Page{% endblock title%}
+{% block content %}
+<head>
+    <style>
+        .track {
+    position: relative;
+    background-color: #ddd;
+    height: 7px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 60px;
+    margin-top: 50px
+}
+
+.track .step {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    width: 25%;
+    margin-top: -18px;
+    text-align: center;
+    position: relative
+}
+
+.track .step.active:before {
+    background: #05a134
+}
+
+.track .step::before {
+    height: 7px;
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    top: 18px
+}
+
+.track .step.active .icon {
+    background: #038a2c;
+    color: #fff
+}
+
+.track .icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-radius: 100%;
+    background: #ddd
+}
+
+.track .step.active .text {
+    font-weight: 400;
+    color: #000
+}
+
+.track .text {
+    display: block;
+    margin-top: 7px
+}
+
+    </style>
+</head>
+<div class="container">
+    <div class="border rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4">Your Order</p>
+        <hr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Sr no</th>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Order Date</th>
+                <th>Price</th>
+                <th>Oty</th>
+                <th>Status</th>
+                <th>Bill</th>
+                <!--<th>Track Order</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in order %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><img style="height:80px;" class="rounded" src="{{order.image.url}}"></td>
+                <td>{{order.product_name}}</td>
+                <td>{{order.ordered_date}}</td>
+                <td>{{order.price}}</td>
+                <td>{{order.qty}}</td>
+                <td>{{order.status}}</td>
+                <td><a href="{% url 'download_invoice' order.id %}"><button type="submit" class="btn btn-primary">Download Invoice </button></a> </td>
+              <!--  <td><a href="/tracker"><button type="submit" class="btn btn-danger"  >Tracker</button> </a> </td>-->
+            </tr>
+            {% endfor %}
+            </tbody>
+            <tr>
+            <td colspan="5">
+            <a class='btn btn-info float-right' href='/'>Continue shopping</a></td>
+            </tr>
+    </table>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

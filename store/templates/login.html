@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+
+{% block title%} Customer Login {% endblock title%}
+
+{% block content %}
+<body  style="background-image:url('/static/images/j5.gif');background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position:right ;">
+<div class="container">
+ <div class="row my-3">
+    <div class="col-sm-6 offset sm-6">
+        <h3> Customer Login </h3>
+
+
+        <form action="/login" method="post" class="shadow p-5">
+
+
+            {% csrf_token %}
+            {% if error %}
+            <div class="alert alert-danger form-control-sm" role="alert">
+                {{error}}
+
+            </div>
+            {%endif%}
+
+            <div class="form-group">
+                <label for="" class="form-control-lg">Mobile Number</label>
+                <input type="text" name="password" id=""  value="{{value.password}}" class="form-control"
+                       placeholder="Enter mobile number"></input>
+            </div>
+            <div class="from-group pt-4">
+                <input class="btn btn-sm btn-info" type="submit" value="Login"> </input>
+            </div>
+
+
+
+              <div class="text-center text-primary fw-bold">
+                  <small class="form-control-sm"> New user to Paradise Mattress?<small>
+                   <a href="/signup" class="text-danger form-control-sm" >Signup</a>
+              </div>
+
+        </form>
+    </div>
+
+ </div>
+
+
+
+</div>
+
+
+
+</body>
+{% endblock%}

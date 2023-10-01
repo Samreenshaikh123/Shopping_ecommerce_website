@@ -1,0 +1,206 @@
+{% load static %}
+
+<html lang="en">
+<head>
+	<title>About Us</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+body{
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.container{
+  max-width: 1170px;
+  margin:auto;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+ul{
+  list-style: none;
+}
+.footer{
+  background-color: #24262b;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+.footer-col h4::before{
+  content: '';
+  position: absolute;
+  left:0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+}
+.footer-col ul li a{
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+  color: #ffffff;
+  padding-left: 8px;
+}
+.footer-col .social-links a{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255,255,255,0.2);
+  margin:0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+	</style>
+</head>
+<body>
+
+	<div>
+
+						<!-- menu start -->
+						{% include 'base.html'%}
+
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+	<!-- end header -->
+
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+
+			</div>
+		</div>
+	</div>
+	<!-- end search arewa -->
+
+
+	<!-- end breadcrumb section -->
+
+	<!-- check out section -->
+	<div class="checkout-section mt-150 mb-150">
+		<div class="container">
+			<h1 class="text-center"> About Us</h1>
+			<div class="row">
+
+
+				<div class="col-lg-6 mt-3">
+					<marquee>	<h4> Welcome to Paradrise Mattress!</h4></marquee>
+<h6>
+At Paradrise Mattress, we take pride in providing you with the finest quality mattresses for a blissful night's sleep.
+	<h6> ~Our story began in the 1990s when our visionary owner, <u><i style=" color:blue">Mohammed Jaffer Shaikh's Father BabaSab Shaikh,</i></u> established our humble mattress shop.</h6>
+	<h6> ~Back then, everything was done manually, from crafting each mattress with meticulous attention to detail to personally
+		assisting customers in finding their perfect sleep solution.</h6>
+
+ <h6>~Over the years, we have grown and adapted with the changing times. While we continue to maintain our commitment to
+	 craftsmanship and quality, we have also embraced the convenience of technology.</h6>
+	<h6>~Today, you can find us online, offering a seamless shopping experience to customers near and far.</h6>
+
+	<h6>~Our dedication to excellence remains unwavering, and we strive to provide you with the best sleep experience possible.</h6>
+	<h6>~Each mattress we offer is thoughtfully designed and made with premium materials to ensure optimal comfort and support.</h6>
+
+<h6>~Customer satisfaction is at the heart of everything we do. Our knowledgeable team is always ready to assist you in choosing
+	the ideal mattress that suits your unique needs. </h6>
+<h6>~Whether you prefer the traditional in-store experience or the ease of online shopping, we are here to
+					guide you every step of the way.</h6>
+	<h6>~We now provide the convenience of online shopping alongside our commitment to craftsmanship and quality.
+	 Find your perfect sleep solution with us today!</h6>
+	<hr>
+	<i style=" color:magenta"><h5>Thank you for choosing Paradrise Mattress as your sleep partner. We look forward to helping you achieve the sleep of your dreams
+		.</h5></i>
+				</div>
+
+				<div class="col-lg-6 mt-3">
+				<img src="{% static 'images/dad.jpeg'%}" width="500" height="600">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end check out section -->
+
+	<!--<p>we now provide the convenience of online shopping alongside our commitment to craftsmanship and quality.
+	 Find your perfect sleep solution with us today!</p>-->
+
+		<footer class="footer">
+     <div class="container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>company</h4>
+          <ul>
+            <li><a href="#">about us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/login">shop</a></li>
+            <li><a href="#">affiliate program</a></li>
+			  <li><a href="tel:9342746341">Call 9342746341</a></li>
+          </ul>
+        </div>
+        <div >      <!--style="text-align:center"-->
+              <h4 style="color:white;">Contact Us</h4><br>
+              <h5 style="color:white">Email Id:<a href="mailto:paradisemattress@gmail.com"> paradisemattress@gmail.com</a></h5><br>
+              <h5 style="color:white">Call Us: <a href="tel:9342746341">+91 9342746341</a></h5><br>
+              <h5 style="color:white">Address:  Subas Road opposite KCC Bank Dharwad, Karnataka</h5><br>
+          </div>
+
+        <div class="footer-col">
+          <h4>online shop</h4>
+          <ul>
+            <li><a href="#">Mattress</a></li>
+            <li><a href="#">Baby Beds</a></li>
+            <li><a href="#">Cotton Beds</a></li>
+            <li><a href="#">Baby Cots</a></li>
+          </ul>
+        </div>
+
+      </div>
+     </div>
+  </footer>
+
+</body>
+</html>
